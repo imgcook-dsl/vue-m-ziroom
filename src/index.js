@@ -80,7 +80,7 @@ module.exports = function(schema, option) {
   };
 
   // convert to responsive unit, such as vw
-  const parseStyle = (style, toVW) => {
+  const parseStyle = (style, toVW, toRem) => {
     const styleData = [];
     for (let key in style) {
       let value = style[key];
@@ -88,6 +88,9 @@ module.exports = function(schema, option) {
         if (toVW) {
           value = (parseInt(value) / _w).toFixed(2);
           value = value == 0 ? value : value + 'vw';
+        }else if(toRem) {
+          value = parseInt(value).toFixed(2);
+          value = 'r(' + value + ')';
         } else {
           value = (parseInt(value)).toFixed(2);
           value = value == 0 ? value : value + 'px';
@@ -262,7 +265,7 @@ module.exports = function(schema, option) {
       `);
       styles4vw.push(`
         .${className} {
-          ${parseStyle(schema.props.style, true)}
+          ${parseStyle(schema.props.style, false, true)}
         }
       `);
     }
@@ -419,7 +422,7 @@ module.exports = function(schema, option) {
               ${lifeCycles.join(',\n')}
             }
           </script>
-          <style src="./index.response.css" />
+          <style src="./index.response.scss" lang="scss"/>
         `, prettierOpt),
         panelType: 'vue',
       },
@@ -429,9 +432,9 @@ module.exports = function(schema, option) {
         panelType: 'css'
       },
       {
-        panelName: 'index.response.css',
-        panelValue: prettier.format(styles4vw.join('\n'), {parser: 'css'}),
-        panelType: 'css'
+        panelName: 'index.response.scss',
+        panelValue: prettier.format(styles4vw.join('\n'), {parser: 'scss'}),
+        panelType: 'scss'
       }
     ],
     renderData: {
