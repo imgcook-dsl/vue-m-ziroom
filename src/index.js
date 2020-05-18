@@ -88,8 +88,8 @@ module.exports = function(schema, option) {
         if (toVW) {
           value = (parseInt(value) / _w).toFixed(2);
           value = value == 0 ? value : value + 'vw';
-        }else if(toRem) {
-          value = parseInt(value).toFixed(2);
+        }else if(toRem) { // custom
+          value = parseFloat(value).toFixed(2);
           value = 'r(' + value + ')';
         } else {
           value = (parseInt(value)).toFixed(2);
@@ -422,17 +422,17 @@ module.exports = function(schema, option) {
               ${lifeCycles.join(',\n')}
             }
           </script>
-          <style src="./index.response.scss" lang="scss"/>
+          <style src="./index.scss" lang="scss"/>
         `, prettierOpt),
         panelType: 'vue',
       },
       {
-        panelName: 'index.css',
+        panelName: 'index.absolute.css',
         panelValue: prettier.format(`${styles.join('\n')}`, {parser: 'css'}),
         panelType: 'css'
       },
       {
-        panelName: 'index.response.scss',
+        panelName: 'index.scss',
         panelValue: prettier.format(styles4vw.join('\n'), {parser: 'scss'}),
         panelType: 'scss'
       }
@@ -444,7 +444,6 @@ module.exports = function(schema, option) {
       methods: methods,
       lifeCycles: lifeCycles,
       styles: styles
-
     },
     noTemplate: true
   };

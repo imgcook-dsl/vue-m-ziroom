@@ -121,4 +121,4 @@ export default {
   updated() {}
 };
 </script>
-<style src="./index.response.scss" lang="scss" />
+<style src="./index.scss" lang="scss" />

@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
-  height: r(534);
+  height: 534px;
 }
 
 .bd {
@@ -12,26 +12,26 @@
   align-items: flex-start;
   flex-direction: row;
   opacity: 1;
-  width: r(342);
-  height: r(342);
+  width: 342px;
+  height: 342px;
 }
 
 .layer {
   position: absolute;
-  top: r(0);
-  left: r(0);
-  width: r(342);
-  height: r(342);
+  top: 0;
+  left: 0;
+  width: 342px;
+  height: 342px;
   overflow: hidden;
 }
 
 .bg {
   position: absolute;
-  top: r(0);
-  left: r(0);
+  top: 0;
+  left: 0;
   opacity: 1;
-  width: r(342);
-  height: r(342);
+  width: 342px;
+  height: 342px;
 }
 
 .wrap {
@@ -40,28 +40,28 @@
   position: relative;
   align-items: center;
   flex-direction: row;
-  margin-top: r(18);
-  margin-left: r(18);
-  border-radius: r(15);
+  margin-top: 18px;
+  margin-left: 18px;
+  border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.4);
-  padding-right: r(9);
-  padding-left: r(10);
-  height: r(30);
+  padding-right: 9px;
+  padding-left: 10px;
+  height: 30px;
 }
 
 .riverdinwei {
   opacity: 1;
-  width: r(14);
-  height: r(18);
+  width: 14px;
+  height: 18px;
 }
 
 .distance {
-  margin-left: r(4);
-  height: r(22);
+  margin-left: 4px;
+  height: 22px;
   font-weight: 400;
-  font-size: r(18);
+  font-size: 18px;
   color: #ffffff;
-  line-height: r(22);
+  line-height: 22px;
   white-space: nowrap;
 }
 
@@ -71,18 +71,18 @@
   flex-direction: row;
   justify-content: center;
   background-color: #ffffff;
-  width: r(342);
-  height: r(114);
+  width: 342px;
+  height: 114px;
 }
 
 .title {
-  margin-top: r(22);
-  width: r(300);
-  height: r(88);
+  margin-top: 22px;
+  width: 300px;
+  height: 88px;
   font-weight: 400;
-  font-size: r(30);
+  font-size: 30px;
   color: #333333;
-  line-height: r(44);
+  line-height: 44px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -93,13 +93,13 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom-left-radius: r(12);
-  border-bottom-right-radius: r(12);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
   background-color: #ffffff;
-  padding-right: r(17);
-  padding-left: r(18);
-  width: r(342);
-  height: r(78);
+  padding-right: 17px;
+  padding-left: 18px;
+  width: 342px;
+  height: 78px;
   overflow: hidden;
 }
 
@@ -107,21 +107,21 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  height: r(30);
+  height: 30px;
 }
 
 .xianjin {
-  width: r(30);
-  height: r(30);
+  width: 30px;
+  height: 30px;
 }
 
 .fashionHome {
-  margin-left: r(6);
-  height: r(28);
+  margin-left: 6px;
+  height: 28px;
   font-weight: 300;
-  font-size: r(24);
+  font-size: 24px;
   color: #666666;
-  line-height: r(28);
+  line-height: 28px;
   white-space: nowrap;
 }
 
@@ -129,20 +129,20 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  height: r(30);
+  height: 30px;
 }
 
 .favorite {
-  width: r(22);
-  height: r(22);
+  width: 22px;
+  height: 22px;
 }
 
 .num {
-  margin-left: r(5);
-  height: r(26);
+  margin-left: 5px;
+  height: 26px;
   font-weight: 400;
-  font-size: r(22);
+  font-size: 22px;
   color: #999999;
-  line-height: r(26);
+  line-height: 26px;
   white-space: nowrap;
 }
