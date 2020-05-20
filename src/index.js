@@ -384,6 +384,19 @@ module.exports = function(schema, option) {
     return result;
   };
 
+  //parse dates for class
+  const parseDatesForClass = datas => {
+    let result = []
+    datas.map(item => {
+      let key = item.split(':')[0]
+      let val = item.split(':').slice(1).join(':')
+      key = key.replace(/'|"/g, '')
+      result.push(key + ': any=' + val)
+    })
+    console.log('result --', result)
+    return result
+  }
+
   if (option.utils) {
     Object.keys(option.utils).forEach((name) => {
       utils.push(`const ${name} = ${option.utils[name]}`);
@@ -396,8 +409,9 @@ module.exports = function(schema, option) {
 
   const prettierOpt = {
     parser: 'vue',
-    printWidth: 80,
-    singleQuote: true
+    printWidth: 120,
+    singleQuote: true,
+    arrowParens: 'avoid'
   };
 
   return {
@@ -408,18 +422,13 @@ module.exports = function(schema, option) {
           <template>
               ${template}
           </template>
-          <script>
+          <script lang="ts">
+            import { Vue } from "vue-property-decorator"
             ${imports.join('\n')}
-            export default {
-              data() {
-                return {
-                  ${datas.join(',\n')}
-                } 
-              },
-              methods: {
-                ${methods.join(',\n')}
-              },
-              ${lifeCycles.join(',\n')}
+
+            export default class App extends Vue {
+              ${parseDatesForClass(datas).join('\n')}
+              
             }
           </script>
           <style src="./index.scss" lang="scss"/>
@@ -435,6 +444,42 @@ module.exports = function(schema, option) {
         panelName: 'index.scss',
         panelValue: prettier.format(styles4vw.join('\n'), {parser: 'scss'}),
         panelType: 'scss'
+      },
+      {
+        panelName: 'mixin.ts',
+        panelValue: `
+import { Vue } from "vue-property-decorator"
+${imports.join('\n')}
+
+  export default class App extends Vue {
+    titleImg: string = "";
+    introItem_bg: string = "";
+    scroll: any = {};
+    cmsData: any = {};
+    themeColor: string = "#0433B9";
+    bgGradientTop: string = "#4ca4f6";
+    bgGradientBottom: string = "#0433b9";
+    loading: any = null;
+    wxShareMask: boolean = false;
+
+    async shareHandler() {
+    const platform = await getPlatformAsync();
+    let shareData = {
+      title: this.cmsData.share[0].title,
+      desc: this.cmsData.share[0].sub_title,
+      link: window.location.href,
+      imgUrl: this.cmsData.share[0].img
+    };
+    if (platform === "wechat") {
+      // 微信内蒙层引导右上角分享
+      this.wxShareMask = true;
+    }else {
+      CommonModule.share(shareData);
+    }
+  }
+}
+      `,
+        panelType: 'js'
       }
     ],
     renderData: {
