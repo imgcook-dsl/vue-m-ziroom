@@ -26,10 +26,11 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import { fetch } from 'whatwg-fetch';
 import jsonp from 'fetch-jsonp';
 
+@Component
 export default class App extends Vue {
   data: any = [
     {
@@ -48,6 +49,42 @@ export default class App extends Vue {
     }
   ];
   constants: any = {};
+
+  async created() {
+    console.log('super props');
+    this.fetch_example();
+    this.jsonp_example();
+  }
+  async updated() {}
+
+  async isReadCountShow(readCount: any) {
+    return readCount > 300;
+  }
+  async fetch_example() {
+    fetch('https://jsonplaceholder.typicode.com/todos/1', { method: 'GET', headers: '{"Content-Type":"json"}' })
+      .then(response => response.json())
+      .then((data, error) => {
+        console.log('fetch example: ', data, error);
+        return data;
+      })
+      .catch(e => {
+        console.log('error', e);
+      });
+  }
+  async jsonp_example() {
+    jsonp('https://assets.airbnb.com/frontend/search_results.js', { jsonpCallbackFunction: 'search_results', body: {} })
+      .then(response => response.json())
+      .then((data, error) => {
+        console.log('jsonp example: ', data, error);
+        return data;
+      })
+      .catch(e => {
+        console.log('error', e);
+      });
+  }
+  async onClick_1(e: any) {
+    window.open(this.item.url, '_blank');
+  }
 }
 </script>
 <style src="./index.scss" lang="scss" />
