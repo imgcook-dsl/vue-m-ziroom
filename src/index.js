@@ -28,6 +28,8 @@ module.exports = function(schema, option) {
 
   const styles4vw = [];
 
+  const zrStyles = [];
+
   // box relative style
   const boxStyleList = ['fontSize', 'marginTop', 'marginBottom', 'paddingTop', 'paddingBottom', 'height', 'top', 'bottom', 'width', 'maxWidth', 'left', 'right', 'paddingRight', 'paddingLeft', 'marginLeft', 'marginRight', 'lineHeight', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'borderTopRightRadius', 'borderTopLeftRadius', 'borderRadius'];
 
@@ -278,9 +280,14 @@ module.exports = function(schema, option) {
       `);
       styles4vw.push(`
         .${className} {
-          ${parseStyle(schema.props.style, false, true)}
+          ${parseStyle(schema.props.style, true, false)}
         }
       `);
+      zrStyles.push(`
+      .${className} {
+        ${parseStyle(schema.props.style, false, true)}
+      }
+    `)
     }
 
     let xml;
@@ -477,8 +484,13 @@ module.exports = function(schema, option) {
       },
       {
         panelName: 'index.scss',
-        panelValue: prettier.format(styles4vw.join('\n'), {parser: 'scss'}),
+        panelValue: prettier.format(zrStyles.join('\n'), {parser: 'scss'}),
         panelType: 'scss'
+      },
+      {
+        panelName: 'index.response.css',
+        panelValue: prettier.format(styles4vw.join('\n'), {parser: 'css'}),
+        panelType: 'css'
       }
     ],
     renderData: {
