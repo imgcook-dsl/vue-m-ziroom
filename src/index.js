@@ -91,7 +91,7 @@ module.exports = function(schema, option) {
           value = (parseInt(value) / _w).toFixed(2);
           value = value == 0 ? value : value + 'vw';
         }else if(toRem) { // custom
-          value = parseFloat(value).toFixed(2);
+          value = (parseFloat(value) * (750 / width)).toFixed(2);
           value = 'r(' + value + ')';
         } else {
           value = (parseInt(value)).toFixed(2);
