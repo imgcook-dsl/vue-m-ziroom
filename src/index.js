@@ -473,25 +473,25 @@ module.exports = function(schema, option) {
               ${parseFunctionForClass(methods).join('\n')}
             }
           </script>
-          <style src="./index.scss" lang="scss"/>
+          <style src="./index.scss" lang="scss" scoped/>
         `, prettierOpt),
         panelType: 'vue',
       },
-      {
-        panelName: 'index.absolute.css',
-        panelValue: prettier.format(`${styles.join('\n')}`, {parser: 'css'}),
-        panelType: 'css'
-      },
+      // {
+      //   panelName: 'index.absolute.css',
+      //   panelValue: prettier.format(`${styles.join('\n')}`, {parser: 'css'}),
+      //   panelType: 'css'
+      // },
       {
         panelName: 'index.scss',
         panelValue: prettier.format(zrStyles.join('\n'), {parser: 'scss'}),
         panelType: 'scss'
       },
-      {
-        panelName: 'index.response.css',
-        panelValue: prettier.format(styles4vw.join('\n'), {parser: 'css'}),
-        panelType: 'css'
-      }
+      // {
+      //   panelName: 'index.response.css',
+      //   panelValue: prettier.format(styles4vw.join('\n'), {parser: 'css'}),
+      //   panelType: 'css'
+      // }
     ],
     renderData: {
       template: template,

@@ -87,4 +87,4 @@ export default class App extends Vue {
   }
 }
 </script>
-<style src="./index.scss" lang="scss" />
+<style src="./index.scss" lang="scss" scoped />
